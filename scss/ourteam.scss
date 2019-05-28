@@ -1,0 +1,30 @@
+/*team page css*/
+.teambox {
+    width: 100%;
+    height: auto;
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+@include computer {
+    .teambox{
+        width: 60%;
+    }
+}
+.whobox {
+    width: 50%;
+    height: 250px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.whopic{
+    width: 50%;
+}
+.pinkTxt {
+    color: deeppink;
+}
+.blueTxt{
+    color: dodgerblue;
+}

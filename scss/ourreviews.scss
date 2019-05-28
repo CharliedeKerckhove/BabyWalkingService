@@ -1,0 +1,29 @@
+/*submitted reviews page*/
+.reviews{
+    width: 90%;
+    font-family: $ffb;
+    font-size: 1em;
+    margin-top: 2%;
+}
+@include computer {
+    .reviews{
+        width: 60%;
+    }
+}
+.reviewData {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 2%;
+}
+.reviewText {
+    margin-bottom: 5%;
+    padding-bottom: 2%;
+    border-bottom: 2px solid #DEDEDE;
+}
+@include computer {
+    .reviewText{
+        margin-bottom: 1%;
+        width: 60%;
+    }
+}

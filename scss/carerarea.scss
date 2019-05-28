@@ -1,0 +1,35 @@
+/*carer homepage*/
+#btncont {
+    width: 100%;
+    margin-top: 1%;
+    text-align: center;
+    display: flex;
+ 
+}
+.viewbookingstable {
+    margin-top: 1%;
+}
+.carernavigation {
+    width: 33%;
+}
+#account {
+    width: 70%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+#bookings {
+    width: 70%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+#logout {
+    width: 30%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+/*logged in message*/
+#loggedin {
+    color: $green;
+    text-align: right;
+    margin-right: 2%;
+}

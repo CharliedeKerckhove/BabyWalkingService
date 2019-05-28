@@ -1,0 +1,81 @@
+/*about page*/
+#abouttitle{
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+@include computer {
+    #abouttitle{
+        margin-bottom: 2%;
+    }
+}
+#aboutcont{
+    display: flex;
+    justify-content: center;
+}
+@include computer {
+    #aboutcont{
+        align-items: center;
+        width: 80%;
+        margin: 2%;
+    }
+}
+#abouttxt{
+    margin-bottom: 2%;
+    max-height: 340px;
+    width: 90%;
+    text-align: justify;
+    overflow-y: scroll;
+}
+@include computer {
+    #abouttxt{
+        font-size: 1.2em;
+        width: 40%;
+    }
+}
+#aboutimg{
+    display: none;
+}
+@include computer {
+    #aboutimg{
+        display: flex;
+        width: 40%;
+        max-height:300px;
+    }
+}
+#aboutbtncont{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+@include computer {
+    #aboutbtncont{
+        width: 80%;
+        align-items: center;
+
+    }
+}
+#aboutreviewbtn{
+    margin-bottom: 2%;
+}
+@include computer {
+    #aboutreviewbtn{
+        width: 25%;
+        margin-bottom: 1%;
+    }
+}
+#aboutteambtn{
+    margin-bottom: 2%;
+}
+@include computer {
+    #aboutteambtn{
+        width: 25%;
+        margin-bottom: 1%
+    }
+}
+@include computer {
+    #aboutbookbtn{
+        margin-top: 1%;
+        margin-bottom: 0%;
+        margin: 0 !important;
+    }
+}

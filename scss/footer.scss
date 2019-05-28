@@ -1,0 +1,146 @@
+/*footer navigation*/
+ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+    list-style-type: none;
+    background-color: white;
+}
+/*social media buttons*/
+#socialmedia{
+    text-align: center;
+    font-family: $ffh;
+    color: $black;
+    font-size: 1.5em;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .3%;
+    width: 100%;
+}
+@include computer {
+    #socialmedia{
+        display: flex;
+    }
+}
+.fa-facebook-f {
+  background: $black;
+    &:hover{
+        background: #3B5998;
+    }
+  color: white;
+  padding: .6%;
+  width: 36px !important;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin-left: 1%;
+}
+.fa-twitter {
+  background: $black;
+    &:hover{
+        background: #55ACEE;
+    }
+  color: white;
+  padding: .6%;
+  width: 36px !important;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin-left: 1%;
+}
+.fa-instagram {
+  background: $black;
+    &:hover{
+        background: #c32aa3;
+    }
+  color: white;
+  padding: .6%;
+  width: 36px !important;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin-left: 1%;
+}
+/*navigation*/
+.navigation {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    font-family: $ffh;
+    font-size: 1.5em;
+}
+@include computer {
+        .navigation {
+            border-style: solid;
+            border-width: 4px;
+            border-radius: 50%;
+            width: 8%;
+            padding-top: 1.5%;
+            padding-bottom: 1.5%;
+            margin: 0%;
+            margin-left: 5%;
+            margin-right: 5%;
+            cursor: pointer;
+        }
+    }
+.navigation2 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    font-family: $ffh;
+    font-size: 1.5em;
+}
+@include computer {
+        .navigation2 {
+            border-style: solid;
+            border-width: 4px;
+            border-radius: 50%;
+            width: 8%;
+            padding-top: 1.5%;
+            padding-bottom: 1.5%;
+            margin: 1%;
+            margin-left: 5%;
+            margin-right: 5%;
+            cursor: pointer;
+        }
+}
+a {
+    text-align: center;
+    color: inherit;
+    text-decoration: inherit;
+}
+@include computer {
+        a{
+        }
+    }
+#homeabout {
+    color: lighten($purple, 15);
+    &:hover{
+        color: $purple;
+    }
+}
+#homelocation {
+    color: lighten($pink, 10);
+    &:hover{
+        color: $pink;
+    }
+}
+#homeprices {
+    color: lighten($green, 25);
+    &:hover{
+        color: $green;
+    }
+}
+#homecontact {
+    color: lighten($blue, 10);
+    &:hover{
+        color: $blue;
+    }
+}

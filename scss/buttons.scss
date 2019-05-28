@@ -1,0 +1,54 @@
+/*button css*/
+button {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: transparent;
+    border: none;
+    overflow: visible;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.booknow {
+    max-width: 100%;
+    width: 60%;
+    display: block;
+    margin: auto;
+    font-family: $ffh;
+    font-size: 1.5em;
+    padding: 1%;
+    border-radius: 10px;
+    background: $purple;
+    &:hover{
+        background-color: darken($purple, 5);
+    }
+}
+@include computer {
+    .booknow {
+        width: 25%;
+    }
+}
+.altbtn {
+    max-width: 100%;
+    width: 60%;
+    display: block;
+    margin: auto;
+    font-family: $ffh;
+    font-size: 1.5em;
+    padding: 1%;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: $purple;
+    &:hover{
+        background-color: $purple;
+    }
+}
+@include computer {
+    .altbtn {
+        width: 25%;
+    }
+}
+#bookingsbtn{
+    width: 40%;
+}

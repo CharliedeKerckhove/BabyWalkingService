@@ -1,0 +1,25 @@
+/*registration form css*/
+.regform {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+}
+#registrationimg {
+    width: 80%;
+    display: block;
+    margin: auto;
+}
+@include computer {
+    #registrationimg{
+        width: 30%;
+    }
+}
+.errormsg {
+    color: lighten(red, 15);
+}
+.successmsg {
+    color: lighten(green, 15);
+}

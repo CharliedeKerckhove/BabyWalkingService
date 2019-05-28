@@ -1,0 +1,65 @@
+/*account page*/
+.accounttbl {
+    margin-top: 1%;
+    font-family: $ffh;
+    color: $black;
+    text-align: center;
+    font-size: 0.8em;
+    width: 100%;
+}
+@include computer {
+    .accounttbl {
+        font-size: 1.2em;
+    }
+}
+#accountcont {
+    width: 100%;
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+@include computer {
+    #accountcont {
+        margin-top: 1%;
+        width: 100%;
+    }
+}
+.fal fa-pencil {
+    font-size: 0.7em;
+}
+.regform {
+    width: 100%;
+    margin-top: 5%;
+}
+@include computer {
+    .regform {
+        margin-top: 1%;
+        width: 100%;
+    }
+}
+/*hide input boxes until clicked*/
+#inputF {
+    display: none;
+}
+#updateF {
+    display: none;
+}
+#inputL {
+    display: none;
+}
+#updateL {
+    display: none;
+}
+#inputP {
+    display: none;
+}
+#updateP {
+    display: none;
+}
+#inputE {
+    display: none;
+}
+#updateE {
+    display: none;
+}

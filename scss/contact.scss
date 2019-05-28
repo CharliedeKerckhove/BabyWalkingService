@@ -1,0 +1,88 @@
+/*contact page*/
+#contacttitle {
+    margin-bottom: 5%;
+}
+@include computer {
+    #contacttitle {
+        margin-bottom: 2%;
+    }
+}
+#contactsubtitle {
+    margin-top: 5%;
+}
+@include computer {
+    #contactsubtitle {
+        margin-top: 2%;
+    }
+}
+#contactcont{
+    display: inline-flex;
+    width: 50%;
+    flex-wrap: wrap;
+}
+@include computer {
+    #contactcont {
+        width: 60%;
+        flex-wrap: nowrap;
+        margin-left: 20%;
+    }
+}
+#emailcontainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+@include computer {
+    #emailcontainer {
+        width: 50%;
+    }
+}
+#phonecontainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+@include computer {
+    #phonecontainer {
+        width: 50%;
+    }
+}
+
+#emailcont {
+    display: block;
+    margin-left: 5%;
+}
+#questionscont {
+    width: 80%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+@include computer {
+    #questionscont {
+        width: 60%;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+/*rearranged on computer*/
+@include computer {
+    .box1 {
+        width: 35%;
+        margin-bottom: 1%;
+        margin-top: 1%;
+    }
+}
+@include computer {
+    .box2 {
+        width: 35%;
+        margin-bottom: 1%;
+        margin-top: 1%;
+    }
+}
+#Questions {
+    margin-bottom: 1%;
+    margin-top: 1%;
+}

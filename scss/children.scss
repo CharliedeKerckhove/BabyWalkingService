@@ -1,0 +1,86 @@
+/*children page*/
+.checkbxs {
+    text-align: left;
+    display: block;
+    margin: auto;
+}
+@include computer {
+    .checkbxs {
+        margin-top: 1%;
+    }
+}
+#checkbxscont {
+    display: inline-block;
+}
+@include computer {
+    #checkbxscont {
+        margin-top: 1%;
+    }
+}
+.newchildform {
+    display: block;
+}
+
+.childrencontent {
+  height: 100%;
+  width: 100%;
+  display: none;
+  overflow-y: scroll;
+  background-color: #f1f1f1;
+}
+#showcont {
+    display: block;
+}
+
+.tab-group {
+	margin: 1em auto;
+	max-width: 40em;
+	width: 100%;
+}
+
+.tab {
+	position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.tabinputs { 
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: -999;
+}
+	
+.tab label {
+	background: $pink;
+	color: #fff; 
+	cursor: pointer;
+	display: block;
+	line-height: 2;
+	margin-bottom: 0.5em;
+}	
+
+.tab input:focus + label,
+.tab label:hover{ 
+	background: $pink;
+	font-weight: bold; 
+}
+
+.tab-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.35s;
+}
+
+.tab-content p {
+	margin: 1em 0;
+}
+
+/* open the tab when label is checked */
+
+.tab input:checked ~ .tab-content { 
+	max-height: 100%;
+}
+#registerchildbtn {
+    width: 60%;
+}

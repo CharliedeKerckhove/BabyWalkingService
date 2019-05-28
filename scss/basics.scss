@@ -1,0 +1,40 @@
+/*structure of pages*/
+header {
+    padding-top: .5%;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    z-index: 1;
+    background: transparent;
+    font-family: $ffh;
+}
+body {
+    position: fixed !important;
+    top: 100px !important;
+    height: 75% !important;
+    width: 100% !important;
+}
+footer {
+    width: 100% !important;
+    position: fixed;
+    bottom: 0;
+}
+.content{
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+@include computer {
+    .content{
+        padding-top: 0%;
+        padding-bottom: 0%;
+    }
+}

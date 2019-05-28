@@ -1,0 +1,38 @@
+/*text styles*/
+h1 {
+    font-family: $ffh;
+    color: $black;
+    text-align: center;
+    font-size: 3em;
+}
+
+h2 {
+    font-family: $ffh;
+    color: $black;
+    text-align: center;
+    font-size: 1.6em;
+}
+@include computer {
+    h2{
+        font-size: 2em;
+    }
+}
+h3 {
+    font-family: $ffh;
+    color: $black;
+    font-size: 1.5em;
+}
+h4 {
+    font-family: $ffh;
+    color: $black;
+    font-size: 1em;
+}
+h5 {
+    font-family: $ffb;
+    color: lighten($black, 10);
+    font-size: 0.8em;
+}
+
+i {
+    font-size: 2em;
+}
