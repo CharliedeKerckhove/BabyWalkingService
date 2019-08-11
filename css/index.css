@@ -1003,7 +1003,7 @@ select {
 }
 .locationContent {
     width: 80%;
-    height: 100%;
+    height: 70vh;
     display: flex;
     margin: auto;
     font-size: 16px;
@@ -1021,7 +1021,12 @@ select {
     border-style: solid;
     border-color: #BAA8F7;
     border-width: 2px;
-    width: 33%;
+    width: 20%;
+}
+@media only screen and (max-width: 798px) {
+    .productsSorter {
+        width: 33%;
+    }
 }
 .facilityList {
     font-family: "Open Sans", sans-serif;
@@ -1048,6 +1053,10 @@ select {
 }
 .productsContainer {
     width: 66%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 }
 .productImg {
     width: 150px;
@@ -1061,17 +1070,15 @@ select {
     }
 }
 .productBox {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
     text-align: center;
     width: 30%;
     border: #BAA8F7 solid 2px;
     color: black;
     margin-left: 1%;
     margin-bottom: 1%;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .facilitiesBtn {
     display: flex;

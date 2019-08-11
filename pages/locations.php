@@ -18,44 +18,49 @@ $query2="SELECT * FROM `locations`  ";//Query stub
 $smt2 = $DBH->prepare($query2);
 $smt2->execute();
 ?>
-    <div class="locationContent">
-        <div id="msg">
-        </div>
+<div class="locationContent">
+    <div id="msg">
+    </div>
 
-        <div class="productsSorter">
-            <h2 class="searchTitles">Sort By</h2>
-            <form action="" method="post" class="facilityList">
-                <?php
-                //check if ticked
-                if($smt1->rowCount()>0){
-                    while($row1=$smt1->fetch(PDO::FETCH_ASSOC)){ 
+    <div class="productsSorter">
+        <h2 class="searchTitles">Sort By</h2>
+        <form action="" method="post" class="facilityList">
+            <?php
+            //check if ticked
+            if($smt1->rowCount()>0){
+                while($row1=$smt1->fetch(PDO::FETCH_ASSOC)){
+                    if(isset($_POST['keyword'])){ 
                         if (in_array($row1['FacilityName'], $_POST['keyword'])) {
-                             echo "<input name='keyword[]' type='checkbox' value='".$row1['FacilityName']."' pid='".$row1['FacilitiesID']."' checked/><label class='facilityGap'>".$row1['FacilityName']."</label> <br>"; 
+                            echo "<input name='keyword[]' type='checkbox' value='".$row1['FacilityName']."' pid='".$row1['FacilitiesID']."' checked/><label class='facilityGap'>".$row1['FacilityName']."</label> <br>"; 
                         }
                         else {
-                           echo "<input name='keyword[]' type='checkbox' value='".$row1['FacilityName']."' pid='".$row1['FacilitiesID']."'/><label class='facilityGap'>".$row1['FacilityName']."</label> <br>"; 
-                        }
+                            echo "<input name='keyword[]' type='checkbox' value='".$row1['FacilityName']."' pid='".$row1['FacilitiesID']."'/><label class='facilityGap'>".$row1['FacilityName']."</label> <br>"; 
+                            }
+                    }
+                    else {
+                        echo "<input name='keyword[]' type='checkbox' value='".$row1['FacilityName']."' pid='".$row1['FacilitiesID']."'/><label class='facilityGap'>".$row1['FacilityName']."</label> <br>"; 
                     }
                 }
-                ?>
+            }
+            ?>
 
-                    <input class="submitFacility" type="submit" name="submit" value="Submit">
-            </form>
-        </div>
-
-        <main id="products" class="productsContainer">
-            <?php
-        if($smt2->rowCount()>0){
-            while($row=$smt2->fetch(PDO::FETCH_ASSOC)){ echo "
-                <div class='productBox'>
-
-                    <h4 class='locationName'>".$row['LocationName']."</h4>
-                    <h4 class='locationCityTown'>".$row['CityTown']."</h4>
-                    <h4 class='locationPostcode'>".$row['Postcode']."</h4>
-                    <button type='submit' id='product' class='facilitiesBtn' pid='".$row['LocationID']."'>View Facilities</button>
-                </div>
-            ";}
-        }
-        ?>
-        </main>
+                <input class="submitFacility" type="submit" name="submit" value="Submit">
+        </form>
     </div>
+
+    <main id="products" class="productsContainer">
+        <?php
+    if($smt2->rowCount()>0){
+        while($row=$smt2->fetch(PDO::FETCH_ASSOC)){ echo "
+            <div class='productBox'>
+
+                <h4 class='locationName'>".$row['LocationName']."</h4>
+                <h4 class='locationCityTown'>".$row['CityTown']."</h4>
+                <h4 class='locationPostcode'>".$row['Postcode']."</h4>
+                <button type='submit' id='product' class='facilitiesBtn' pid='".$row['LocationID']."'><a href='admin.php?p=viewFacilities'>View Facilities</a></button>
+            </div>
+        ";}
+    }
+    ?>
+    </main>
+</div>
