@@ -1,0 +1,110 @@
+.staffTbl{
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 2%;
+    width: 98%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+}
+
+.staffTbl td, .staffTbl th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.staffTbl tr:nth-child(even){background-color: #f2f2f2;}
+
+.staffTbl tr:hover {background-color: #ddd;}
+
+.staffTbl th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+//locations
+.locationContent {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    margin: auto;
+    font-size: 16px;
+}
+@media only screen and (max-width: 798px) {
+    .locationContent {
+        width: 100%;
+    }
+}
+.searchTitles {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.productsSorter {
+    border-style: solid;
+    border-color: $pink;
+    border-width: 2px;
+    width: 15%;
+}
+.facilityList{
+    font-family: $ffb;
+    text-align: left;
+    float: left;
+    padding-left: 3%;
+}
+.facilityGap{
+    margin-left: 2%;
+}
+.submitFacility{
+    width: 100%;
+    display: block;
+    margin: auto;
+    margin-top: 1%;
+    font-family: $ffb;
+    font-size: 1.5em;
+    padding: 1%;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: $pink;
+    background-color: transparent;    
+}
+.productsContainer {
+    width: 80%;
+}
+.productImg {
+    width: 150px;
+    height: 150px;
+    margin: 5%;
+}
+@media only screen and (max-width: 798px) {
+    .productImg {
+        width: 80px;
+        height: 80px;
+    }
+}
+.productBox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    text-align: center;
+    width: 30%;
+    border: $pink solid 2px;
+    color: black;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    position: relative;
+}
+.facilitiesBtn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: $pink;
+    color: white;
+    border: none;
+    margin-top: 1%;
+    padding: 10px 0px;
+    cursor: pointer;
+}

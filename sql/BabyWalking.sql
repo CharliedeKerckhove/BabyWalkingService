@@ -433,6 +433,19 @@ INSERT INTO Reviews VALUES ('4', 'Bob', '4', 'Very friendly and an easy to use w
 INSERT INTO Reviews VALUES ('5', 'Tia', '4', 'Booked a walk whilst my child had a strop about not being allowed to have ANOTHER cookie and now I have to resist the urge to book one everytime my children throw a tantrum.');
 INSERT INTO Reviews VALUES ('6', 'Katie', '2', 'Late bringing my child back, child also cried when returned home');
 
+CREATE VIEW AllVenues AS
+SELECT f.*, l.* FROM facilities AS f JOIN venue AS v ON f.FacilitiesID = v.FacilitiesID JOIN location AS l ON l.LocationID = v.LocationID;
+
+CREATE VIEW locations AS
+SELECT `location`.*, group_concat(`facilities`.`FacilityName` separator ',') AS `facility_name` 
+FROM `venue` 
+INNER JOIN `location` 
+ON `location`.`LocationID` = `venue`.`LocationID`
+INNER JOIN `facilities` 
+ON `facilities`.`FacilitiesID` = `venue`.`FacilitiesID`
+GROUP BY `location`.`LocationName`  
+ORDER BY `location`.`LocationID` ASC
+
 DROP USER IF EXISTS 'admin'@'localhost';
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'supersecurepassword123';
 GRANT ALL PRIVILEGES ON dekc1_16_babywalking.* TO 'admin'@'localhost';

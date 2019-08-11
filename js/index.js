@@ -13,32 +13,36 @@ function login() {
 }
 
 $(document).ready(function () {
-/*gets information from viewChildren.php*/
+    /*gets information from viewChildren.php*/
     $.get("ajax/viewChildren.php", function (data) {
         /*display data within div labelled regChildren*/
         $("#regChildren").html(data);
     })
-
 });
 
 $(document).ready(function () {
-/*gets information from FirstName.php*/
+    /*gets information from FirstName.php*/
     $.get("ajax/FirstName.php", function (data) {
         $("#hideF").html(data);
     });
-/*gets information from LastName.php*/
+    /*gets information from LastName.php*/
     $.get("ajax/LastName.php", function (data) {
         $("#hideL").html(data);
     });
-/*gets information from Phone.php*/
+    /*gets information from Phone.php*/
     $.get("ajax/Phone.php", function (data) {
         $("#hideP").html(data);
     });
-/*gets information from Email.php*/
+    /*gets information from Email.php*/
     $.get("ajax/Email.php", function (data) {
         $("#hideE").html(data);
     });
 
+});
+
+$(document).ready(function () {
+    var facilityList = $('input[name="keyword[]"]:checked');
+    console.log(facilityList);
 });
 
 /*display input box and update button and hide pencil symbol and current info for first name when pen symbol clicked*/
