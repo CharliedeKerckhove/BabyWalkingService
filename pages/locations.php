@@ -52,13 +52,12 @@ $smt2->execute();
         <?php
     if($smt2->rowCount()>0){
         while($row=$smt2->fetch(PDO::FETCH_ASSOC)){ echo "
-            <div class='productBox'>
-
+            <form class='productBox' method='post' action='admin.php?p=viewFacilities&i=".$row['LocationID']."'>
                 <h4 class='locationName'>".$row['LocationName']."</h4>
                 <h4 class='locationCityTown'>".$row['CityTown']."</h4>
                 <h4 class='locationPostcode'>".$row['Postcode']."</h4>
-                <button type='submit' id='product' class='facilitiesBtn' pid='".$row['LocationID']."'><a href='admin.php?p=viewFacilities'>View Facilities</a></button>
-            </div>
+                <button type='submit' id='".$row['LocationID']."' class='facilitiesBtn'>View Facilities</button>
+            </form>
         ";}
     }
     ?>
