@@ -1,18 +1,29 @@
 <?php
 /*select facilities*/
 $locationID = $_GET['i'];
-$query1 ='SELECT LocationName, CityTown, Postcode, facility_name
+$query ="SELECT LocationName, CityTown, Postcode, facility_name
           FROM `locations` 
-          WHERE LocationID = '.$locationID.'';
-$smt1 = $DBH->prepare($query1);
-$smt1->execute();
-?>
+          WHERE LocationID = '".$locationID."'";
+$smt1 = $DBH->query($query);
+while ($row = $smt1->fetch()): ?>
 
-<h1>Park Name</h1>
+<h2><?php echo $row['LocationName'] ?></h2>
 
 <div class="locationList">
-    <h3>Located: </h3>
-    <h3> Location</h3>
+    <h4>Located:</h4>
+    <h4><?php echo $row['CityTown'] ?>, <?php echo $row['Postcode'] ?></h4>
+</div>
+<div class="facilities">
+<h4>Facilities available:</h4>
+<div class="facilitiesList">
+    <?php 
+        $facilities = explode(",", $row['facility_name']);
+        foreach ($facilities as $facility):
+    ?>
+    <p><?php echo $facility; ?></p>
+        <?php endforeach; ?>
+        </div>
 </div>
 
-<h4>Facilities available:</h4>
+<?php endwhile; ?>
+<button class='facilitiesBtn'><a href='admin.php?p=locations'>Back</a></button>

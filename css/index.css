@@ -851,7 +851,7 @@ select {
   border-style: solid;
   border-color: #BAA8F7;
   border-width: 2px;
-  width: 15%; }
+  width: 30%; }
 
 .facilityList {
   font-family: "Open Sans", sans-serif;
@@ -889,17 +889,11 @@ select {
     width: 80px;
     height: 80px; } }
 .productBox {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
   text-align: center;
-  width: 30%;
   border: #BAA8F7 solid 2px;
   color: black;
   margin-left: 1%;
-  margin-bottom: 1%;
-  position: relative; }
+  margin-bottom: 1%; }
 
 .facilitiesBtn {
   display: flex;
@@ -917,6 +911,39 @@ select {
   margin-bottom: 15px;
   display: flex;
   justify-content: space-evenly; }
+
+.facilities {
+  display: flex;
+  text-align: left;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.productsContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+  overflow-y: scroll; }
+
+.productsContainer .productBox {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+@media (max-width: 400px) {
+  .productsContainer {
+    display: block; }
+    .productsContainer .productBox {
+      width: 100%;
+      margin: 0 0 10px 0; } }
+* {
+  box-sizing: border-box; }
+
+.productsContainer {
+  margin: 0 0 20px 0; }
 
 /*footer navigation*/
 ul {
