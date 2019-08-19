@@ -47,19 +47,20 @@ $smt2->execute();
                 <input class="submitFacility" type="submit" name="submit" value="Submit">
         </form>
     </div>
-
-    <main id="products" class="productsContainer">
-        <?php
-    if($smt2->rowCount()>0){
-        while($row=$smt2->fetch(PDO::FETCH_ASSOC)){ echo "
-            <form class='productBox' method='post' action='admin.php?p=viewFacilities&i=".$row['LocationID']."'>
-                <h4 class='locationName'>".$row['LocationName']."</h4>
-                <h4 class='locationCityTown'>".$row['CityTown']."</h4>
-                <h4 class='locationPostcode'>".$row['Postcode']."</h4>
-                <button type='submit' id='".$row['LocationID']."' class='facilitiesBtn'>View Facilities</button>
-            </form>
-        ";}
-    }
-    ?>
+    <main class="productScroller" style="height: 70vh;">
+        <div id="products" class="productsContainer">
+            <?php
+        if($smt2->rowCount()>0){
+            while($row=$smt2->fetch(PDO::FETCH_ASSOC)){ echo "
+                <form class='productBox' method='post' action='admin.php?p=viewFacilities&i=".$row['LocationID']."'>
+                    <h4 class='locationName'>".$row['LocationName']."</h4>
+                    <h4 class='locationCityTown'>".$row['CityTown']."</h4>
+                    <h4 class='locationPostcode'>".$row['Postcode']."</h4>
+                    <button type='submit' id='".$row['LocationID']."' class='facilitiesBtn'>View Facilities</button>
+                </form>
+            ";}
+        }
+        ?>
+        </div>
     </main>
 </div>
