@@ -79,10 +79,8 @@ CREATE TABLE IF NOT EXISTS StaffAllocation
 (
 StaffAllocationID CHAR(5) NOT NULL,
 StaffID INT NOT NULL,
-LocationID CHAR(5) NOT NULL,
 BookingID INT NOT NULL,
 CONSTRAINT PK_StaffAllocation PRIMARY KEY(StaffAllocationID),
-CONSTRAINT FK_AllocatedLocationStaff FOREIGN KEY(LocationID) REFERENCES Location(LocationID),
 CONSTRAINT FK_AllocatedStaff FOREIGN KEY(StaffID) REFERENCES Staff(StaffID),
 CONSTRAINT FK_BookingSlot FOREIGN KEY(BookingID) REFERENCES Booking(BookingID)
 );
@@ -144,11 +142,9 @@ CREATE TABLE IF NOT EXISTS ChildAllocation
 (
 ChildAllocationID INT NOT NULL AUTO_INCREMENT,
 ChildID INT NOT NULL,
-LocationID CHAR(5) NOT NULL,
 BookingID INT NOT NULL,
 CONSTRAINT PK_ChildAllocation PRIMARY KEY(ChildAllocationID),
 CONSTRAINT FK_AllocatedChild FOREIGN KEY(ChildID) REFERENCES Child(ChildID),
-CONSTRAINT FK_AllocatedLocationChild FOREIGN KEY(LocationID) REFERENCES Location(LocationID),
 CONSTRAINT FK_ChildBooking FOREIGN KEY(BookingID) REFERENCES Booking(BookingID)
 );
 
@@ -406,19 +402,19 @@ INSERT INTO Booking VALUES ('5','SE003','2019-11-21','21:00:00','2, Keswick Driv
 INSERT INTO Booking VALUES ('6','SE003','2019-11-21','21:00:00','2, Keswick Drive, Lightwater, Surrey','GU18 6YR', '13');
 INSERT INTO Booking VALUES ('7','SE001','2019-02-01','12:00:00','Alpaca Home, Mortlake Road, Kew, Richmond, Surrey','TW9 7AT', '8');
 
-INSERT INTO ChildAllocation VALUES ('1','3','L1004','4');
-INSERT INTO ChildAllocation VALUES ('2','5','L1002','5');
-INSERT INTO ChildAllocation VALUES ('3','13','L1002','6');
-INSERT INTO ChildAllocation VALUES ('4','8','L1012','7');
-INSERT INTO ChildAllocation VALUES ('5','2','L1006','1');
-INSERT INTO ChildAllocation VALUES ('6','7','L1017','3');
-INSERT INTO ChildAllocation VALUES ('7','1','L1017','2');
+INSERT INTO ChildAllocation VALUES ('1','3','4');
+INSERT INTO ChildAllocation VALUES ('2','5','5');
+INSERT INTO ChildAllocation VALUES ('3','13','6');
+INSERT INTO ChildAllocation VALUES ('4','8','7');
+INSERT INTO ChildAllocation VALUES ('5','2','1');
+INSERT INTO ChildAllocation VALUES ('6','7','3');
+INSERT INTO ChildAllocation VALUES ('7','1','2');
 
-INSERT INTO StaffAllocation VALUES ('AS001','4','L1006','1');
-INSERT INTO StaffAllocation VALUES ('AS002','6','L1017','2');
-INSERT INTO StaffAllocation VALUES ('AS003','1','L1002','4');
-INSERT INTO StaffAllocation VALUES ('AS004','9','L1004','3');
-INSERT INTO StaffAllocation VALUES ('AS005','5','L1012','5');
+INSERT INTO StaffAllocation VALUES ('AS001','4','1');
+INSERT INTO StaffAllocation VALUES ('AS002','6','2');
+INSERT INTO StaffAllocation VALUES ('AS003','1','4');
+INSERT INTO StaffAllocation VALUES ('AS004','9','3');
+INSERT INTO StaffAllocation VALUES ('AS005','5','5');
 
 INSERT INTO Reviews VALUES ('1', 'Sean', '5', 'Great service, kind and passionate carers working hard to make my life easier');
 INSERT INTO Reviews VALUES ('2', 'Jack', '5', 'Helped me actually get some sleep, first power nap of parenthood thanks to these guys');

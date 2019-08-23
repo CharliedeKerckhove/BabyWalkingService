@@ -12,7 +12,16 @@
         </tr>
         <?php 
             /*display all children*/
-            $stmt=$DBH->prepare('SELECT * FROM booking');
+            $stmt=$DBH->prepare('
+            SELECT `booking`.`BookingID`,`BookingDate`,`BookingTime`,`CollectionAddress`,`CollectionPostcode`, child.FirstName, service.ServiceName, service.Length 
+            FROM `booking`
+            LEFT JOIN service 
+            ON service.ServiceID = booking.ServiceID 
+            INNER JOIN child 
+            ON child.ChildID = booking.ChildID 
+            LEFT JOIN staffallocation 
+            ON staffallocation.BookingID = booking.BookingID
+            ');
             $stmt->execute();
             while($rows=$stmt->fetch(PDO::FETCH_ASSOC)){
         ?>
@@ -20,16 +29,18 @@
         <tr>
             <td> <?php echo $rows['BookingDate']; ?></td>
             <td> <?php echo $rows['BookingTime']; ?></td>
-            <td> <?php echo $rows['ServiceID']; ?></td>
+            <td> <?php echo $rows['Length']."Hr ".$rows['ServiceName']; ?></td>
             <td> <?php echo $rows['CollectionAddress']." ".$rows['CollectionPostcode']; ?></td>
-            <td> <?php echo $rows['ChildID']; ?></td>
-            <td><select>
-                <?php foreach($carers->fetch(PDO::FETCH_ASSOC) as $carer):?>
-                    <option><?=$carer['FirstName']." ".$carer['LastName']?></option>
-                <?php endforeach;?>
-                </select>
-            </td>
-
+            <td> <?php echo $rows['FirstName']; ?></td>
+            <td><select id="bookedSelect" onchange="changeAllocation(<?php echo $rows['BookingID']; ?>)">
+                <option>---</option>
+                <?php
+                $smt=$DBH->prepare('SELECT `StaffID`,`FirstName`,`LastName` FROM `staff`');
+                $smt->execute();
+                while($row=$smt->fetch(PDO::FETCH_ASSOC)){?>
+                <option value="<?php echo $row['StaffID']?>"><?php echo $row['FirstName']." ".$row['LastName']; ?></option>
+                <?php }?>
+            </select></td>
         </tr>
             <?php } ?>
     </table>
