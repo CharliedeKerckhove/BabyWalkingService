@@ -1,5 +1,5 @@
 <div class = "content">
-<h2>Your Bookings</h2>
+<h2>Your Unallocated Bookings</h2>
 <div id = "accountcont">
     <table class = "accounttbl">
         <tr>
@@ -21,6 +21,10 @@
             ON child.ChildID = booking.ChildID 
             LEFT JOIN staffallocation 
             ON staffallocation.BookingID = booking.BookingID
+            WHERE booking.`BookingID`NOT IN ( 
+                SELECT staffallocation.BookingID 
+                FROM staffallocation
+            )
             ');
             $stmt->execute();
             while($rows=$stmt->fetch(PDO::FETCH_ASSOC)){

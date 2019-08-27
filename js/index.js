@@ -48,10 +48,10 @@ $(document).ready(function () {
 function changeAllocation(bookingID){
     var staffID = document.getElementById("bookedSelect").value;
     $.post("ajax/allocateBooking.php",{bookingID:bookingID,staffID:staffID}, function(response){
-        if(response.success){
-            console.log('success');
+        if(response==='success'){
+            location.reload();
         } else {
-            console.log('fail');
+            alert("Allocation Failed");
         }
     });
 }

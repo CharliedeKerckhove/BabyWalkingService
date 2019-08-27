@@ -9,5 +9,7 @@ if($_POST['bookingID'] && $_POST['staffID']){
         $result->bindParam(':staffId', $_POST['staffID']);
         $result->bindParam(':bookingId', $_POST['bookingID']);
         $result->execute();
+
+        echo 'success';
 }
 ?>

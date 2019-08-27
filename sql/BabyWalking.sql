@@ -442,6 +442,14 @@ ON `facilities`.`FacilitiesID` = `venue`.`FacilitiesID`
 GROUP BY `location`.`LocationName`  
 ORDER BY `location`.`LocationID` ASC;
 
+CREATE VIEW `allbookings` AS
+SELECT `booking`.`BookingID`,`BookingDate`,`BookingTime`,`CollectionAddress`,`CollectionPostcode`, child.FirstName, service.ServiceName, service.Length 
+            FROM `booking`
+            LEFT JOIN service 
+            ON service.ServiceID = booking.ServiceID 
+            INNER JOIN child 
+            ON child.ChildID = booking.ChildID
+
 --DROP USER IF EXISTS 'admin'@'localhost';
 --CREATE USER 'admin'@'localhost' IDENTIFIED BY 'supersecurepassword123';
 --GRANT ALL PRIVILEGES ON dekc1_16_babywalking.* TO 'admin'@'localhost';

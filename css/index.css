@@ -547,8 +547,7 @@ select {
   display: block;
   margin: auto;
   margin-top: 5%;
-  margin-bottom: 5%;
-  overflow-y: auto; }
+  margin-bottom: 5%; }
 
 @media only screen and (min-width: 480px) {
   #accountcont {
@@ -945,6 +944,11 @@ select {
   color: #393E41;
   font-size: 1em;
   padding-left: 50px; }
+
+#calendar {
+  width: 60%;
+  display: block;
+  margin: auto; }
 
 /*footer navigation*/
 ul {
