@@ -11,15 +11,21 @@
     <link href='fullcalendar/core/main.css' rel='stylesheet' />
     <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
     <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
+    <!-- Modal -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     
     <script src='fullcalendar/core/main.min.js'></script>
     <script src='fullcalendar/daygrid/main.min.js'></script>
     <script src='fullcalendar/timegrid/main.min.js'></script>
-    <script src='fullcalendar/interaction/main.min.js'></script>
+    <script src='fullcalendar/interaction/main.min.js'></script>    
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     
+    <!-- Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
   <title>Baby Walking Service</title>
 </head> 
 

@@ -15,8 +15,8 @@
             dateClick: function(info) {
                 alert('clicked ' + info.dateStr);
             },
-            select: function(info) {
-                alert('selected ' + info.startStr + ' to ' + info.endStr);
+            select: function(start, end) {
+                $('#viewModal').modal('open');
             }
         });
 
@@ -25,3 +25,15 @@
 
     </script>
 <div id='calendar'></div>
+
+<div id="viewModal" class="modal">
+  <h2>Edit Event</h2>
+  Child Name : <input value="Michael"/><br>
+  Collection Address : <input value="Greek Palace, Eyston Drive, Weybridge, Surrey KT13 4AZ"/><br>
+  Collection Time : <input value="21st Aug 2019 12:00"/><br>
+  Service : <input value="Walking"/><br>
+  Length of time : <input value="2"/><br>
+  <a href="#" rel="modal:close">Close</a>
+  <a href="#" rel="modal:close">Add</a>
+</div>
+
