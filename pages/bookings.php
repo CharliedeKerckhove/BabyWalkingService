@@ -20,16 +20,16 @@
             ?>
             <tr><td><br></td></tr>
             <tr>
-                <th>Date Booked</th>
+                <th>Start Date Booked</th>
                 <td>
                     <?php 
-                    echo $rows['BookingDate']; ?>
+                    echo $rows['StartDate']; ?>
                 </td> 
             </tr>
             <tr>
-                <th>Time Booked</th>
+                <th>End Date Booked</th>
                 <td>
-                    <?php echo $rows['BookingTime']; ?>
+                    <?php echo $rows['EndDate']; ?>
                 </td> 
             </tr>
             <tr>

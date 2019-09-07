@@ -9,36 +9,35 @@
 /*computer specific styles*/
 /*structure of pages*/
 header {
-  padding-top: .5%;
-  height: 100px;
+  height: 15vh;
   width: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
   align-content: center;
-  z-index: 1;
   background: transparent;
   font-family: "Varela Round", sans-serif; }
 
 body {
   position: fixed !important;
-  top: 100px !important;
-  height: 75% !important;
-  width: 100% !important; }
+  height: 100vh !important;
+  width: 100% !important;
+  font-family: "Open Sans", sans-serif; }
 
 footer {
+  height: 15vh;
   width: 100% !important;
   position: fixed;
   bottom: 0; }
 
 .content {
-  height: 100%;
+  height: 70vh;
   position: relative;
   display: flex;
   flex-flow: column;
-  align-items: center; }
+  align-items: center;
+  overflow-y: auto; }
 
 @media only screen and (min-width: 480px) {
   .content {
@@ -145,7 +144,7 @@ button {
     color: #8A98FC; }
 
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password], input[type=email], input[type=date] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -154,7 +153,7 @@ input[type=text], input[type=password], input[type=email] {
   box-sizing: border-box; }
 
 @media only screen and (min-width: 480px) {
-  input[type=text], input[type=password], input[type=email] {
+  input[type=text], input[type=password], input[type=email], input[type=date] {
     width: 60% !important; } }
 /* Extra styles for the cancel button */
 .cancelbtn {
@@ -181,8 +180,7 @@ img.avatar {
   flex-direction: column; }
 
 span.psw {
-  float: right;
-  padding-top: 16px; }
+  float: right; }
 
 /* The Modal (background) */
 .modal {
@@ -196,10 +194,8 @@ span.psw {
   top: 0;
   width: 100%;
   /* Full width */
-  height: 100%;
+  height: 60vh;
   /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
   background-color: black;
   /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
@@ -258,7 +254,7 @@ span.psw {
 
 @media only screen and (min-width: 480px) {
   #hometitle {
-    margin-top: 5%; } }
+    margin-top: 0; } }
 #homesubtitle {
   margin-top: 5%; }
 
@@ -816,7 +812,6 @@ select {
 .staffTbl {
   margin-left: 1%;
   margin-right: 1%;
-  margin-top: 2%;
   width: 98%;
   border-collapse: collapse;
   font-family: sans-serif; }
@@ -856,8 +851,7 @@ select {
   border-style: solid;
   border-color: #BAA8F7;
   border-width: 2px;
-  width: 30%;
-  height: 70vh; }
+  width: 30%; }
 
 .facilityList {
   font-family: "Open Sans", sans-serif;
@@ -950,6 +944,11 @@ select {
   display: block;
   margin: auto; }
 
+.eventCont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+
 /*footer navigation*/
 ul {
   display: flex;
@@ -1023,11 +1022,9 @@ ul {
   .navigation {
     border-style: solid;
     border-width: 4px;
-    border-radius: 50%;
-    width: 8%;
+    width: 25%;
     padding-top: 1.5%;
     padding-bottom: 1.5%;
-    margin: 0%;
     margin-left: 5%;
     margin-right: 5%;
     cursor: pointer; } }
@@ -1046,16 +1043,18 @@ ul {
   .navigation2 {
     border-style: solid;
     border-width: 4px;
-    border-radius: 50%;
-    width: 8%;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
+    width: 25%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     margin: 1%;
     margin-left: 5%;
     margin-right: 5%;
     cursor: pointer; } }
 a {
+  display: flex;
+  align-items: center;
   text-align: center;
+  justify-content: center;
   color: inherit;
   text-decoration: inherit; }
 

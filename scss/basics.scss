@@ -1,36 +1,35 @@
 /*structure of pages*/
 
 header {
-    padding-top: .5%;
-    height: 100px;
+    height: 15vh;
     width: 100%;
-    position: fixed;
     top: 0;
     left: 0;
     display: flex;
     justify-content: space-between;
     align-content: center;
-    z-index: 1;
     background: transparent;
     font-family: $ffh;
 }
 body {
     position: fixed !important;
-    top: 100px !important;
-    height: 75% !important;
+    height: 100vh !important;
     width: 100% !important;
+    font-family: $ffb;
 }
 footer {
+    height: 15vh;
     width: 100% !important;
     position: fixed;
     bottom: 0;
 }
 .content {
-    height: 100%;
+    height: 70vh;
     position: relative;
     display: flex;
     flex-flow: column;
     align-items: center;
+    overflow-y: auto;
 }
 @include computer {
     .content {

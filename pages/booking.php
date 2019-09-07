@@ -19,11 +19,11 @@ else{
 
     if(isset($_POST["submit"])){   
         /*insert new booking information to database*/
-        $query3 ='INSERT INTO `booking` (BookingID, ServiceID, BookingDate, BookingTime, CollectionAddress, CollectionPostcode, ChildID) VALUES (NULL, :service, :bookingdate, :bookingtime, :collectionaddress, :collectionpostcode, :child)';
+        $query3 ='INSERT INTO `booking` (BookingID, ServiceID, StartDate, EndDate, CollectionAddress, CollectionPostcode, ChildID) VALUES (NULL, :service, :startdate, :enddate, :collectionaddress, :collectionpostcode, :child)';
         $smt = $DBH->prepare($query3);
         $smt->bindParam(':service', $_POST["service"]);
-        $smt->bindParam(':bookingdate', $_POST["date"]);
-        $smt->bindParam(':bookingtime', $_POST["time"]);
+        $smt->bindParam(':startdate', $_POST["StartDate"]);
+        $smt->bindParam(':enddate', $_POST["EndDate"]);
         $smt->bindParam(':collectionaddress', $_POST["address"]);
         $smt->bindParam(':collectionpostcode', $_POST["postcode"]);
         $smt->bindParam(':child', $_POST["child"]);
@@ -41,14 +41,14 @@ else{
                 <?php
             /*display services availble*/
             while($row2 = $service->fetch(PDO::FETCH_ASSOC)) { 
-                echo "<option value='".$row2["ServiceID"]."'> ".$row2['ServiceName']."&#160;".$row2['Length']." hour &#163;".$row2['Price']."</option>";
+                echo "<option value='".$row2["ServiceID"]."'> ".$row2['ServiceName']."&#160;".$row2['Price']."</option>";
             }
             ?>
             </select>
-            <h3>Date</h3>
-            <input type="date" class="bookingInput" name="date" placeholder="Select Date" required>
-            <h3>Time</h3>
-            <input type="time" class="bookingInput" name="time" placeholder="Select Time" step="1" required>
+            <h3>Start</h3>
+            <input type="date" class="bookingInput" name="StartDate" placeholder="Select Start Date" required>
+            <h3>End</h3>
+            <input type="date" class="bookingInput" name="EndDate" placeholder="Select End Date" required>
             <h3>Collection Address</h3>
             <input type="text" class="bookingInput" name="address" placeholder="Enter Collection Address" required>
             <h3>Collection Postcode</h3>

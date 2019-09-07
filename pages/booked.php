@@ -3,8 +3,8 @@
 <div id = "accountcont">
     <table class = "accounttbl">
         <tr>
-            <th>Date</th>
-            <th>Time</th>
+            <th>Start</th>
+            <th>End</th>
             <th>Service</th>
             <th>Collection Location</th>
             <th>Child</th>
@@ -13,7 +13,7 @@
         <?php 
             /*display all children*/
             $stmt=$DBH->prepare('
-            SELECT `booking`.`BookingID`,`BookingDate`,`BookingTime`,`CollectionAddress`,`CollectionPostcode`, child.FirstName, service.ServiceName, service.Length 
+            SELECT `booking`.`BookingID`,`StartDate`,`EndDate`,`CollectionAddress`,`CollectionPostcode`, child.FirstName, service.ServiceName, service.Length 
             FROM `booking`
             LEFT JOIN service 
             ON service.ServiceID = booking.ServiceID 
@@ -31,8 +31,8 @@
         ?>
 
         <tr>
-            <td> <?php echo $rows['BookingDate']; ?></td>
-            <td> <?php echo $rows['BookingTime']; ?></td>
+            <td> <?php echo $rows['StartDate']; ?></td>
+            <td> <?php echo $rows['EndDate']; ?></td>
             <td> <?php echo $rows['Length']."Hr ".$rows['ServiceName']; ?></td>
             <td> <?php echo $rows['CollectionAddress']." ".$rows['CollectionPostcode']; ?></td>
             <td> <?php echo $rows['FirstName']; ?></td>

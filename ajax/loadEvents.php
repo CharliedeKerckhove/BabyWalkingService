@@ -15,8 +15,9 @@ $result = $smt1->fetchAll();
 foreach($result as $row){
     $data[] = array(
         'id' => $row['BookingID'],
-        'start' => $row['BookingDate'] . " " . $row['BookingTime'],
-        'title' => $row['Length'] . "Hr " . $row['ServiceName']
+        'start' => $row['StartDate'],
+        'end' => $row['EndDate'],
+        'title' => $row['ServiceName']
     );
 
 }
