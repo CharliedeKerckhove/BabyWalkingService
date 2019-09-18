@@ -6,26 +6,39 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
             selectable: true,
-            contentHeight: 400,
+            height: 'parent',
+            contentHeight: 'auto',
             header: {
             left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
             events: 'ajax/loadEvents.php',
-            /* dateClick: function(info) {
-                alert('clicked ' + info.dateStr);
-            }, */
+            editable: true,
+            eventClick: function(info) {
+                var eventObj = info.event;
+                $('#editEvent').modal('open');
+            },
             select: function(start, end) {
-                $('#insertEvent').modal('open');
-                
-               /*  if(editEvent) {
-                    calendar.addEvent({
-                        title: $row['Length'] . "Hr " . $row['ServiceName'],
-                        start: date,
-                        allDay: true
+                var modal = $('#insertEvent').modal('open');
+                if(modal){
+                    $.ajax({
+                        url:'ajax/insertEvents.php',
+                        type:'POST',
+                        data:{
+                            serviceid: serviceid,
+                            start: startDate,
+                            end: endDate,
+                            address: address,
+                            postcode: postcode,
+                            child: childid
+                        },
+                        success:function(){
+                            calendar.fullCalendar('refetchEvents');
+                            alert('Added Successfully!');
+                        }
                     });
-                } */
+                }
             }
         });
 
@@ -35,18 +48,25 @@
     </script>
 <div class="content">
     <div id='calendar'></div>
-
+<!-- Insert Modal -->
     <form method="POST" action="ajax/insertEvent.php" id="insertEvent" class="modal">
         <h2>Insert Event</h2>
         <br>
         <div class="eventCont">
-            <label class="eventCont">Child Name : </label><input type="text" placeholder="Enter Child Name"/>
+            <label for="childName" class="eventCont">Child Name : </label>
+            <input id="childName" name="name" type="text" placeholder="Enter Child Name"/>
         </div>
         <div class="eventCont">    
-            <label class="eventCont">Collection Address : </label><input type="text" placeholder="Enter Collection Address"/>
+            <label for="collectionAddress" class="eventCont">Collection Address : </label>
+            <input id="collectionAddress" name="address" type="text" placeholder="Enter Collection Address"/>
         </div>
         <div class="eventCont">    
-            <label class="eventCont">Collection Date : </label><input type="date" placeholder="Select Date"/>
+            <label for="collectionPostcode" class="eventCont">Collection Postcode : </label>
+            <input id="collectionPostcode" name="postcode" type="text" placeholder="Enter Collection Postcode"/>
+        </div>
+        <div class="eventCont">    
+            <label for="collectionDate" class="eventCont">Collection Date : </label>
+            <input id="collectionDate" name="startDate" type="date" placeholder="Select Date"/>
         </div>
         <div class="eventCont">    
             <label>Service : </label>
@@ -62,7 +82,7 @@
             <button type="submit" class="altbtn"><a href="#" rel="modal:close">Add</a></button>
         </div> 
     </form>
-
+<!-- Edit Modal -->
     <form method="POST" action="ajax/editEvent.php" id="viewModal" class="modal">
         <h2>Edit Event</h2>
         <br>
