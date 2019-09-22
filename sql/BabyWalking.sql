@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS Service
 (
 ServiceID CHAR(5) NOT NULL,
 ServiceName VARCHAR(50) NOT NULL,
-Price INT(3),
 CONSTRAINT PK_Service PRIMARY KEY(ServiceID)
 );
 
@@ -68,8 +67,9 @@ CREATE TABLE IF NOT EXISTS Booking
 (
 BookingID INT NOT NULL AUTO_INCREMENT,
 ServiceID CHAR(5) NOT NULL,   
-StartDate DATETIME NOT NULL,
-EndDate DATETIME NOT NULL,
+BookingDate DATE NOT NULL,
+StartTime TIME NOT NULL,
+EndTime TIME NOT NULL,
 CollectionAddress VARCHAR(100),
 CollectionPostcode CHAR(8),
 ChildID INT NOT NULL,
@@ -160,15 +160,12 @@ CREATE INDEX Carer_X ON Carer(CarerID,FirstName,LastName,PhoneNumber);
 CREATE INDEX CarerLogin_X ON Carer(Email,CarerPassword);
 CREATE INDEX Child_X ON Child(ChildID,FirstName);
 -- CREATE INDEX ChildAllergies_X ON ChildAllergies(ChildAllergiesID,ChildID,AllergiesID);
-CREATE INDEX Booking_X ON Booking(BookingID,StartDate,EndDate);
-CREATE INDEX Service_X ON Service(ServiceID,Price);
+CREATE INDEX Booking_X ON Booking(BookingID,BookingDate,StartTime,EndTime);
 
 -- INSERT DATA
-INSERT INTO Service VALUES ('SE001','30 min Walking','25');
-INSERT INTO Service VALUES ('SE002','1 hour Walking','40');
-INSERT INTO Service VALUES ('SE003','2 hour Walking','60');
-INSERT INTO Service VALUES ('SE004','Sitting','60');
-INSERT INTO Service VALUES ('SE005','Tutoring','60');
+INSERT INTO Service VALUES ('SE001','Walking');
+INSERT INTO Service VALUES ('SE002','Baby Sitting');
+INSERT INTO Service VALUES ('SE003','Tutoring');
 
 INSERT INTO Facilities VALUES ('F1001','Toilet');
 INSERT INTO Facilities VALUES ('F1002','Disabled Toilet');
@@ -401,13 +398,13 @@ INSERT INTO Venue VALUES ('V1103','L1024','F1005');
 INSERT INTO Venue VALUES ('V1104','L1024','F1006');
 INSERT INTO Venue VALUES ('V1105','L1025','F1013');
 
-INSERT INTO Booking VALUES ('1','SE002','2019-05-02 12:30:00','2019-05-02 13:30:00','Greek Palace, Eyston Drive, Weybridge, Surrey','KT13 4AZ', '2');
-INSERT INTO Booking VALUES ('2','SE001','2020-01-01 15:15:00','2020-01-01 15:45:00','183, Thrupps Lane, Hersham Village, Surrey','KT12 5TT', '1');
-INSERT INTO Booking VALUES ('3','SE001','2020-01-01 15:15:00','2020-01-01 15:45:00','183, Thrupps Lane, Hersham Village, Surrey','KT12 5TT', '7');
-INSERT INTO Booking VALUES ('4','SE001','2019-07-08 10:30:00','2019-07-08 11:00:00','44, Tilford Road, Farnham, Surrey','GU9 2SA', '4');
-INSERT INTO Booking VALUES ('5','SE003','2019-11-21 21:00:00','2019-11-21 23:00:00','2, Keswick Drive, Lightwater, Surrey','GU18 6YR', '5');
-INSERT INTO Booking VALUES ('6','SE003','2019-11-21 21:00:00','2019-11-21 23:00:00','2, Keswick Drive, Lightwater, Surrey','GU18 6YR', '13');
-INSERT INTO Booking VALUES ('7','SE001','2019-02-01 12:00:00','2019-02-01 12:30:00','Alpaca Home, Mortlake Road, Kew, Richmond, Surrey','TW9 7AT', '8');
+INSERT INTO Booking VALUES ('1','SE001','2019-05-02','12:30:00','13:30:00','Greek Palace, Eyston Drive, Weybridge, Surrey','KT13 4AZ', '2');
+INSERT INTO Booking VALUES ('2','SE001','2020-01-01','15:15:00','15:45:00','183, Thrupps Lane, Hersham Village, Surrey','KT12 5TT', '1');
+INSERT INTO Booking VALUES ('3','SE001','2020-01-01','15:15:00','15:45:00','183, Thrupps Lane, Hersham Village, Surrey','KT12 5TT', '7');
+INSERT INTO Booking VALUES ('4','SE001','2019-07-08','10:30:00','11:00:00','44, Tilford Road, Farnham, Surrey','GU9 2SA', '4');
+INSERT INTO Booking VALUES ('5','SE001','2019-11-21','21:00:00','23:00:00','2, Keswick Drive, Lightwater, Surrey','GU18 6YR', '5');
+INSERT INTO Booking VALUES ('6','SE001','2019-11-21','21:00:00','23:00:00','2, Keswick Drive, Lightwater, Surrey','GU18 6YR', '13');
+INSERT INTO Booking VALUES ('7','SE001','2019-02-01','12:00:00','12:30:00','Alpaca Home, Mortlake Road, Kew, Richmond, Surrey','TW9 7AT', '8');
 
 INSERT INTO ChildAllocation VALUES ('1','3','4');
 INSERT INTO ChildAllocation VALUES ('2','5','5');
@@ -444,7 +441,7 @@ GROUP BY `location`.`LocationName`
 ORDER BY `location`.`LocationID` ASC;
 
 CREATE VIEW `allbookings` AS
-SELECT `booking`.`BookingID`,`StartDate`,`EndDate`,`CollectionAddress`,`CollectionPostcode`, child.FirstName, service.ServiceName 
+SELECT `booking`.`BookingID`,`BookingDate`,`StartTime`,`EndTime`,`CollectionAddress`,`CollectionPostcode`, child.FirstName, service.ServiceName 
 FROM `booking`
 LEFT JOIN service 
 ON service.ServiceID = booking.ServiceID 
