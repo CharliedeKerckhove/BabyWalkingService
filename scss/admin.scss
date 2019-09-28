@@ -152,3 +152,16 @@
     align-items: center;
     justify-content: space-between;
 }
+.serviceInput{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+@include computer {
+    .serviceInput{
+        width: 60% !important;
+    }
+}

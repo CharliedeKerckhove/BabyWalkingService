@@ -14,12 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         events: 'ajax/loadEvents.php',
         editable: true,
-        eventClick: function(info) {
-            var eventObj = info.event;
-            $('#editEvent').modal('show');
+        eventClick: function(start, end) {
+            $('#viewEvent').modal('open');
         },
         select: function(start, end) {
-            $('#insertEvent').modal('show');
+            $('#insertEvent').modal('open');
         }
     });
     calendar.render();
@@ -33,16 +32,18 @@ document.addEventListener('DOMContentLoaded', function() {
             endTime: $('#endTime').val(),
             address: $('#collectionAddress').val(),
             postcode: $('#collectionPostcode').val(),
-            child: '1'
+            FirstName: $('#childName').val(),
+            PhoneNumber: $('#carerPhone').val()
         };
         $.ajax({
             url:'ajax/insertEvent.php',
             type:'POST',
             data: data,
+            success:function(){
+                calendar.refetchEvents();
+                $.modal.close();
+            }
         });
-        calendar.refetchEvents();
-        $('#insertEvent').modal('hide');
-        
     });
 });
 
@@ -55,7 +56,11 @@ document.addEventListener('DOMContentLoaded', function() {
         <br>
         <div class="eventCont">
             <label for="childName" class="eventCont">Child Name : </label>
-            <input id="childName" name="name" type="text" placeholder="Enter Child Name"/>
+            <input id="childName" name="childName" type="text" placeholder="Enter Child Name"/>
+        </div>
+        <div class="eventCont">
+            <label for="carerPhone" class="eventCont">Carer Phone Number: </label>
+            <input id="carerPhone" name="carerPhone" type="tel" placeholder="Enter Carer Phone Number"/>
         </div>
         <div class="eventCont">    
             <label for="collectionAddress" class="eventCont">Collection Address : </label>
@@ -81,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div class="eventCont">    
             <label>Service : </label>
-            <select id="service">
+            <select id="service" class="serviceInput">
             <?php
              $query = 'SELECT * FROM `service`';
              $service = $DBH->prepare($query);
@@ -97,24 +102,58 @@ document.addEventListener('DOMContentLoaded', function() {
             <button class="altbtn"><a href="#" rel="modal:close">Close</a></button>
             <button type="submit" class="altbtn" id="insertBtn">Add</button>
         </div> 
-    </form>
+    </div>
 <!-- Edit Modal -->
-    <form method="POST" action="ajax/editEvent.php" id="viewModal" class="modal">
-        <h2>Edit Event</h2>
+    <div id="viewEvent" class="modal">
+        <h2>View Event</h2>
         <br>
-        <label class="eventCont">Child Name :</label> <input type="text" placeholder="Enter Child Name"/><br>
-            <label class="eventCont">Collection Address :</label> <input type="text" placeholder="Enter Collection Address"/><br>
-            <label class="eventCont">Collection Date :</label> <input type="date" placeholder="Select Date"/><br>
-            <label class="eventCont">Service : </label>
-                <select>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
+        <div class="eventCont">
+            <label for="childName" class="eventCont">Child Name : </label>
+            <input id="childName" name="childName" type="text" placeholder="Enter Child Name"/>
+        </div>
+        <div class="eventCont">
+            <label for="carerPhone" class="eventCont">Carer Phone Number: </label>
+            <input id="carerPhone" name="carerPhone" type="tel" placeholder="Enter Carer Phone Number"/>
+        </div>
+        <div class="eventCont">    
+            <label for="collectionAddress" class="eventCont">Collection Address : </label>
+            <input id="collectionAddress" name="address" type="text" placeholder="Enter Collection Address"/>
+        </div>
+        <div class="eventCont">    
+            <label for="collectionPostcode" class="eventCont">Collection Postcode : </label>
+            <input id="collectionPostcode" name="postcode" type="text" placeholder="Enter Collection Postcode"/>
+        </div>
+        <div class="eventCont">    
+            <label for="collectionDate" class="eventCont">Collection Date : </label>
+            <input id="collectionDate" name="date" type="date" placeholder="Select Date"/>
+        </div>
+        <div class="eventCont" style="justify-content:flex-end;">
+            <div style="display:inline-flex;">    
+                <label for="startTime" class="eventCont">From : </label>
+                <input id="startTime" name="startTime" type="time" placeholder="Select Start Time" style="margin-left:5px;margin-right:10px;"/>
+            </div>
+            <div style="display:inline-flex;">
+                <label for="endTime" class="eventCont">To : </label>
+                <input id="endTime" name="endTime" type="time" placeholder="Select End Time" style="margin-left:5px;"/>
+            </div>
+        </div>
+        <div class="eventCont">    
+            <label>Service : </label>
+            <select id="service" class="serviceInput">
+            <?php
+             $query = 'SELECT * FROM `service`';
+             $service = $DBH->prepare($query);
+             $service->execute();
+             while($row = $service->fetch(PDO::FETCH_ASSOC)) { 
+                echo "<option value='".$row["ServiceID"]."'> ".$row['ServiceName']."</option>";
+            }
+            ?>
+            </select>
+        </div>
             <br>
         <div style="display: flex">
             <button class="altbtn"><a href="#" rel="modal:close">Close</a></button>
-            <button type="submit" class="altbtn"><a href="#" rel="modal:close">Add</a></button>
+            <button type="submit" class="altbtn" id="insertBtn">Add</button>
         </div> 
-    </form>
+    </div>
 </div>
