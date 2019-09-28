@@ -14,8 +14,28 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         events: 'ajax/loadEvents.php',
         editable: true,
-        eventClick: function(start, end) {
-            $('#viewEvent').modal('open');
+        eventClick: function(info) {
+            var eventObj = info.event;
+            var id = eventObj.id;
+
+            $.ajax({
+            url:'ajax/viewEvent.php',
+            type:'POST',
+            data: {BookingID: id},
+            success:function(data){
+                $('#viewEvent input[name=service]').val(data.ServiceName),
+                $('#viewEvent input[name=date]').val(data.BookingDate),
+                $('#viewEvent input[name=startTime]').val(data.StartTime),
+                $('#viewEvent input[name=endTime]').val(data.EndTime),
+                $('#viewEvent input[name=address]').val(data.CollectionAddress),
+                $('#viewEvent input[name=postcode]').val(data.CollectionPostcode),
+                $('#viewEvent input[name=childName]').val(data.FirstName),
+                $('#viewEvent input[name=carerPhone]').val(data.PhoneNumber)
+       
+                $('#viewEvent').modal('open');
+            }
+        });
+            
         },
         select: function(start, end) {
             $('#insertEvent').modal('open');
