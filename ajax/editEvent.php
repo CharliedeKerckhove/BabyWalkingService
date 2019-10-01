@@ -22,7 +22,7 @@ $smt1->execute(
 );
 
 $result = $smt1->fetch(PDO::FETCH_ASSOC);
-$data[] = array(
+$data =[
     'BookingDate' => $result['BookingDate'],
     'StartTime' => $result['StartTime'],
     'EndTime' => $result['EndTime'],
@@ -31,7 +31,7 @@ $data[] = array(
     'ServiceName' => $result['ServiceName'],
     'FirstName' => $result['FirstName'],
     'PhoneNumber' => $result['PhoneNumber']
-);
-return json_encode($data);
+];
+echo json_encode($data);
 
 ?>

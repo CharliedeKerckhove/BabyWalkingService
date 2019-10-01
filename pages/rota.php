@@ -19,20 +19,21 @@ document.addEventListener('DOMContentLoaded', function() {
             var id = eventObj.id;
 
             $.ajax({
-            url:'ajax/viewEvent.php',
+            url:'ajax/editEvent.php',
             type:'POST',
             data: {BookingID: id},
             success:function(data){
-                $('#viewEvent input[name=service]').val(data.ServiceName),
-                $('#viewEvent input[name=date]').val(data.BookingDate),
-                $('#viewEvent input[name=startTime]').val(data.StartTime),
-                $('#viewEvent input[name=endTime]').val(data.EndTime),
-                $('#viewEvent input[name=address]').val(data.CollectionAddress),
-                $('#viewEvent input[name=postcode]').val(data.CollectionPostcode),
-                $('#viewEvent input[name=childName]').val(data.FirstName),
-                $('#viewEvent input[name=carerPhone]').val(data.PhoneNumber)
+                var data = JSON.parse(data);
+                $('#editEvent #service').val(data.ServiceName),
+                $('#editEvent #collectionDate').val(data.BookingDate),
+                $('#editEvent #startTime').val(data.StartTime),
+                $('#editEvent #endTime').val(data.EndTime),
+                $('#editEvent #collectionAddress').val(data.CollectionAddress),
+                $('#editEvent #collectionPostcode').val(data.CollectionPostcode),
+                $('#editEvent #childName').val(data.FirstName),
+                $('#editEvent #carerPhone').val(data.PhoneNumber)
        
-                $('#viewEvent').modal('open');
+                $('#editEvent').modal('open');
             }
         });
             
@@ -124,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
         </div> 
     </div>
 <!-- Edit Modal -->
-    <div id="viewEvent" class="modal">
-        <h2>View Event</h2>
+    <div id="editEvent" class="modal">
+        <h2>Edit Event</h2>
         <br>
         <div class="eventCont">
             <label for="childName" class="eventCont">Child Name : </label>
@@ -173,7 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <br>
         <div style="display: flex">
             <button class="altbtn"><a href="#" rel="modal:close">Close</a></button>
-            <button type="submit" class="altbtn" id="insertBtn">Add</button>
+            <button class="altbtn" id="deleteBtn">Delete</button>
+            <button type="submit" class="altbtn" id="updateBtn">Update</button>
         </div> 
     </div>
 </div>
