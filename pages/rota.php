@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             success:function(data){
                 var data = JSON.parse(data);
                 $('#editEvent #service').val(data.ServiceName),
+                $('#editEvent #bookingID').val(data.BookingID),
                 $('#editEvent #collectionDate').val(data.BookingDate),
                 $('#editEvent #startTime').val(data.StartTime),
                 $('#editEvent #endTime').val(data.EndTime),
@@ -44,20 +45,93 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     calendar.render();
 
+    /* Insert data */
     $('#insertBtn').on("click", function(e){
         e.preventDefault();
         var data = {
-            serviceid: $('#service').val(),
-            date: $('#collectionDate').val(),
-            startTime: $('#startTime').val(),
-            endTime: $('#endTime').val(),
-            address: $('#collectionAddress').val(),
-            postcode: $('#collectionPostcode').val(),
-            FirstName: $('#childName').val(),
-            PhoneNumber: $('#carerPhone').val()
+            serviceid: $('#insertEvent #service').val(),
+            date: $('#insertEvent #collectionDate').val(),
+            startTime: $('#insertEvent #startTime').val(),
+            endTime: $('#insertEvent #endTime').val(),
+            address: $('#insertEvent #collectionAddress').val(),
+            postcode: $('#insertEvent #collectionPostcode').val(),
+            FirstName: $('#insertEvent #childName').val(),
+            PhoneNumber: $('#insertEvent #carerPhone').val()
         };
+        var errors = 0;
+        if(data.FirstName == "") {
+            errors++;
+        }
+        if(data.date == "") {
+            errors++;
+        }
+        if(data.startTime == "") {
+            errors++;
+        }
+        if(data.endTime == "") {
+            errors++;
+        }
+        if(data.address == "") {
+            errors++;
+        }
+        if(data.postcode == "") {
+            errors++;
+        }
+        if(data.PhoneNumber == "") {
+            errors++;
+        }
+        if(data.serviceid == "") {
+            errors++;
+        }
+
+        if(errors > 0) {
+            $('#insertErrors').show();
+            return;
+        }
+
         $.ajax({
             url:'ajax/insertEvent.php',
+            type:'POST',
+            data: data,
+            success:function(){
+                calendar.refetchEvents();
+                $('#insertErrors').hide();
+                $.modal.close();
+            }
+        });
+    });
+    /* Update data */
+    $('#updateBtn').on("click", function(e){
+        e.preventDefault();
+        var data = {
+            bookingid: $('#editEvent #bookingID').val(),
+            serviceid: $('#editEvent #service').val(),
+            date: $('#editEvent #collectionDate').val(),
+            startTime: $('#editEvent #startTime').val(),
+            endTime: $('#editEvent #endTime').val(),
+            address: $('#editEvent #collectionAddress').val(),
+            postcode: $('#editEvent #collectionPostcode').val(),
+            FirstName: $('#editEvent #childName').val(),
+            PhoneNumber: $('#editEvent #carerPhone').val()
+        };
+        $.ajax({
+            url:'ajax/updateEvent.php',
+            type:'POST',
+            data: data,
+            success:function(){
+                calendar.refetchEvents();
+                $.modal.close();
+            }
+        });
+    });
+    /* Delete data */
+    $('#deleteBtn').on("click", function(e){
+        e.preventDefault();
+        var data = {
+            bookingid: $('#editEvent #bookingID').val()
+        };
+        $.ajax({
+            url:'ajax/deleteEvent.php',
             type:'POST',
             data: data,
             success:function(){
@@ -123,11 +197,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <button class="altbtn"><a href="#" rel="modal:close">Close</a></button>
             <button type="submit" class="altbtn" id="insertBtn">Add</button>
         </div> 
+        <h3 id="insertErrors" class="errormsg popupErrorTxt">Error: Please complete all fields</h3>
     </div>
 <!-- Edit Modal -->
     <div id="editEvent" class="modal">
         <h2>Edit Event</h2>
         <br>
+        <input id="bookingID"  type="hidden" name="bookingID" value=""/>
         <div class="eventCont">
             <label for="childName" class="eventCont">Child Name : </label>
             <input id="childName" name="childName" type="text" placeholder="Enter Child Name"/>
@@ -177,5 +253,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <button class="altbtn" id="deleteBtn">Delete</button>
             <button type="submit" class="altbtn" id="updateBtn">Update</button>
         </div> 
+        <h3 id="editErrors" class="errormsg popupErrorTxt">Error: Please complete all fields</h3>
     </div>
 </div>

@@ -945,6 +945,11 @@ select {
   margin: auto;
   height: 70vh; }
 
+.popupErrorTxt {
+  margin-top: 15px;
+  display: none;
+  text-align: center; }
+
 .eventCont {
   display: flex;
   align-items: center;
