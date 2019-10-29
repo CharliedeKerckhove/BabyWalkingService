@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         events: 'ajax/loadEvents.php',
+        eventOverlap: false,
         editable: true,
         eventClick: function(info) {
             var eventObj = info.event;

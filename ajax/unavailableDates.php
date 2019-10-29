@@ -7,9 +7,7 @@ require_once('../includes/db.php');
 
 /*select events*/
 $query1 ='  SELECT * 
-            FROM `booking` 
-            INNER JOIN `service`
-            ON `booking`.ServiceID = `service`.ServiceID
+            FROM `booking`
         ';
 $smt1 = $DBH->prepare($query1);
 $smt1->execute();
@@ -21,8 +19,9 @@ foreach($result as $row){
         'id' => $row['BookingID'],
         'start' => $row['BookingDate'] . " " . $row['StartTime'],
         'end' => $row['BookingDate'] . " " . $row['StartTime'],
-        'title' => $row['ServiceName'],
-        'overlap' => false
+        'overlap' => false,
+        'rendering' => 'background',
+        'color' => '#ff9f89'
     );
 
 }
