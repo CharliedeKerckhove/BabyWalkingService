@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div class="eventCont">    
             <label for="collectionDate" class="eventCont">Collection Date : </label>
-            <input id="collectionDate" name="date" type="date" placeholder="Select Date"/>
+            <input id="collectionDate" class="datetimepicker bookingdtp" name="date" type="text" placeholder="Select Date" autocomplete="off"/>
         </div>
         <div class="eventCont" style="justify-content:flex-end;">
             <div style="display:inline-flex;">    
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div class="eventCont">    
             <label for="collectionDate" class="eventCont">Collection Date : </label>
-            <input id="collectionDate" name="date" type="date" placeholder="Select Date"/>
+            <input id="collectionDate" class="datetimepicker bookingdtp" name="date" type="text" placeholder="Select Date" autocomplete="off"/>
         </div>
         <div class="eventCont" style="justify-content:flex-end;">
             <div style="display:inline-flex;">    

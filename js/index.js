@@ -1,3 +1,11 @@
+$('.datetimepicker').datetimepicker();
+
+$('.bookingdtp').datetimepicker({
+    beforeShowDay: function(datetime) {
+        return [datetime.getDay() == 6 || datetime.getDay() == 0 ? false : true];
+    }
+});
+
 /*allow login pop up*/
 function login() {
     console.log("yes");
