@@ -1,5 +1,6 @@
 <?php
 
+date_default_timezone_set('Europe/London');
 $data = array();
 
 /*link to database*/
@@ -16,15 +17,25 @@ $result = $smt1->fetchAll();
 
 foreach($result as $row){
     $data[] = array(
-        'id' => $row['BookingID'],
         'start' => $row['BookingDate'] . " " . $row['StartTime'],
-        'end' => $row['BookingDate'] . " " . $row['StartTime'],
-        'overlap' => false,
-        'rendering' => 'background',
-        'color' => '#ff9f89'
+        'end' => $row['BookingDate'] . " " . $row['EndTime']
     );
-
 }
-echo json_encode($data);
+
+$unavailable = [];
+
+
+foreach ($data as $daytime) {
+    $start = new DateTime($daytime['start']);
+    $end = new DateTime($daytime['end']);
+    $interval = new DateInterval('PT15M');
+
+    $period = new DatePeriod($start, $interval, $end);
+    foreach ($period as $dt) {
+        $unavailable[] = $dt->format('Y-m-d');
+    }
+}
+
+echo json_encode($unavailable);
 
 ?>

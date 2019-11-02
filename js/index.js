@@ -1,9 +1,25 @@
-$('.datetimepicker').datetimepicker();
-
+//$('.datetimepicker').datetimepicker();
+/* beforeShowDay: function(datetime) {
+    return [datetime.getDay() == 6 || datetime.getDay() == 0 ? false : true];
+}, */
 $('.bookingdtp').datetimepicker({
-    beforeShowDay: function(datetime) {
-        return [datetime.getDay() == 6 || datetime.getDay() == 0 ? false : true];
-    }
+    formatDate:'Y-m-d',
+    disabledDates: [function(datetime) {
+        $.post("ajax/unavailableDates.php", {}, function(disabled_dates){
+            var array = disabled_dates
+            var date = datetime.getFullYear() +  "-" + addZero((datetime.getMonth() + 1)) + "-" + addZero(datetime.getDate());
+
+            /* If array of unavailable date times includes this date time */
+            return [array.indexOf(date) == -1]
+        }, 'json');
+
+        function addZero(i) {
+            if (i < 10) {
+              i = "0" + i;
+            }
+            return i;
+        }
+    }]
 });
 
 /*allow login pop up*/
