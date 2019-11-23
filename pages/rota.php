@@ -168,16 +168,16 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div class="eventCont">    
             <label for="collectionDate" class="eventCont">Collection Date : </label>
-            <input id="collectionDate" class="datetimepicker bookingdtp" name="date" type="text" placeholder="Select Date" autocomplete="off"/>
+            <input id="collectionDate" class="bookingdtp" name="date" type="text" placeholder="Select Date" autocomplete="off"/>
         </div>
         <div class="eventCont" style="justify-content:flex-end;">
             <div style="display:inline-flex;">    
                 <label for="startTime" class="eventCont">From : </label>
-                <input id="startTime" name="startTime" type="time" placeholder="Select Start Time" style="margin-left:5px;margin-right:10px;"/>
+                <input id="startTime"  class="bookingtp" name="startTime" type="time" placeholder="Select Start Time" style="margin-left:5px;margin-right:10px;"/>
             </div>
             <div style="display:inline-flex;">
                 <label for="endTime" class="eventCont">To : </label>
-                <input id="endTime" name="endTime" type="time" placeholder="Select End Time" style="margin-left:5px;"/>
+                <input id="endTime"  class="bookingtp" name="endTime" type="time" placeholder="Select End Time" style="margin-left:5px;"/>
             </div>
         </div>
         <div class="eventCont">    
@@ -223,16 +223,16 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div class="eventCont">    
             <label for="collectionDate" class="eventCont">Collection Date : </label>
-            <input id="collectionDate" class="datetimepicker bookingdtp" name="date" type="text" placeholder="Select Date" autocomplete="off"/>
+            <input id="collectionDate" class="bookingdtp" name="date" type="text" placeholder="Select Date" autocomplete="off"/>
         </div>
         <div class="eventCont" style="justify-content:flex-end;">
             <div style="display:inline-flex;">    
                 <label for="startTime" class="eventCont">From : </label>
-                <input id="startTime" name="startTime" type="time" placeholder="Select Start Time" style="margin-left:5px;margin-right:10px;"/>
+                <input id="startTime" class="bookingtp" name="startTime" type="time" placeholder="Select Start Time" style="margin-left:5px;margin-right:10px;"/>
             </div>
             <div style="display:inline-flex;">
                 <label for="endTime" class="eventCont">To : </label>
-                <input id="endTime" name="endTime" type="time" placeholder="Select End Time" style="margin-left:5px;"/>
+                <input id="endTime" class="bookingtp" name="endTime" type="time" placeholder="Select End Time" style="margin-left:5px;"/>
             </div>
         </div>
         <div class="eventCont">    

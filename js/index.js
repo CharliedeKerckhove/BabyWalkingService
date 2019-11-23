@@ -3,25 +3,27 @@
     return [datetime.getDay() == 6 || datetime.getDay() == 0 ? false : true];
 }, */
 $('.bookingdtp').datetimepicker({
-    formatDate:'Y-m-d',
-    disabledDates: [function(datetime) {
-        $.post("ajax/unavailableDates.php", {}, function(disabled_dates){
-            var array = disabled_dates
-            var date = datetime.getFullYear() +  "-" + addZero((datetime.getMonth() + 1)) + "-" + addZero(datetime.getDate());
-
-            /* If array of unavailable date times includes this date time */
-            return [array.indexOf(date) == -1]
-        }, 'json');
-
-        function addZero(i) {
-            if (i < 10) {
-              i = "0" + i;
-            }
-            return i;
-        }
-    }]
+    format:'d/m/Y',
+    timepicker: false
 });
 
+$('body').on('change','.bookingdtp', function(){
+    var date = $(this).val();
+    removeTimes(date);
+});
+
+function removeTimes(date){
+    //check times available for this day
+    var url = 'ajax/unavailableDates.php'
+    var data = {date:date};
+    $.post(url, data, function(times){
+        $('.bookingtp').datetimepicker({
+            format:'H:i',
+            datepicker: false,
+            allowTimes: times
+        });
+    }, 'json');
+}
 /*allow login pop up*/
 function login() {
     console.log("yes");
