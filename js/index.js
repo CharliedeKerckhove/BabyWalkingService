@@ -71,8 +71,9 @@ $(document).ready(function () {
     console.log(facilityList);
 });
 
-function changeAllocation(bookingID){
-    var staffID = document.getElementById("bookedSelect").value;
+$('body').on('change','.bookedSelect', function(){
+    var bookingID = $(this).data('booking');
+    var staffID = $(this).val();
     $.post("ajax/allocateBooking.php",{bookingID:bookingID,staffID:staffID}, function(response){
         if(response==='success'){
             location.reload();
@@ -80,7 +81,8 @@ function changeAllocation(bookingID){
             alert("Allocation Failed");
         }
     });
-}
+})
+
 
 /*display input box and update button and hide pencil symbol and current info for first name when pen symbol clicked*/
 function changeFName() {
