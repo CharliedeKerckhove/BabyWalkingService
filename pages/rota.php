@@ -40,8 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
             
         },
-        select: function(start, end) {
+        select: function(info) {
             $('#insertEvent').modal('open');
+            var date = info.startStr;
+            date = date.split("-");
+            date = date[2] + "/" + date[1] + "/" + date[0];
+
+            $('#insertEvent #collectionDate').val(date);
+            removeTimes(date)
         }
     });
     calendar.render();
@@ -49,6 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
     /* Insert data */
     $('#insertBtn').on("click", function(e){
         e.preventDefault();
+        $('#insertErrorTime').hide();
+        $('#insertErrors').hide();
         var data = {
             serviceid: $('#insertEvent #service').val(),
             date: $('#insertEvent #collectionDate').val(),
@@ -89,17 +97,21 @@ document.addEventListener('DOMContentLoaded', function() {
             $('#insertErrors').show();
             return;
         }
+        if(data.endTime < data.startTime){
+            $('#insertErrorTime').show();
+            return;
+        }
 
-        $.ajax({
-            url:'ajax/insertEvent.php',
-            type:'POST',
-            data: data,
-            success:function(){
+        var url = 'ajax/insertEvent.php';
+        $.post(url,data,function(response){
+            if(response !== "Booking Added Successfully"){
+                alert(response);
+            } else {
                 calendar.refetchEvents();
                 $('#insertErrors').hide();
                 $.modal.close();
             }
-        });
+        }, 'json');
     });
     /* Update data */
     $('#updateBtn').on("click", function(e){
@@ -199,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <button type="submit" class="altbtn" id="insertBtn">Add</button>
         </div> 
         <h3 id="insertErrors" class="errormsg popupErrorTxt">Error: Please complete all fields</h3>
+        <h3 id="insertErrorTime" class="errormsg popupErrorTxt">Error: End time must occur after start time</h3>
     </div>
 <!-- Edit Modal -->
     <div id="editEvent" class="modal">

@@ -39,6 +39,11 @@ foreach($availablePeriod as $availableTime) {
     $availableTimes[] = $availableTime->format('H:i');
 }
 
+if(empty($data)){
+    echo json_encode(array_values($availableTimes));
+    return;
+}
+
 foreach ($data as $time) {
     $start = new DateTime($time['start']);
     $end = new DateTime($time['end']);
